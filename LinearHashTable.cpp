@@ -6,7 +6,7 @@ LinearHashTable::LinearHashTable() {
 
 void LinearHashTable::insert(int key) {
     int index = key % tableSize;
-    while(hashTable[index].isStoring == false) {
+    while(hashTable[index].isStoring == true) {
         index++;
         if(index >= 40009)
             index = 0;
@@ -17,7 +17,7 @@ void LinearHashTable::insert(int key) {
 
 int LinearHashTable::search(int key) {
     int index = key % tableSize;
-    while(hashTable[index].isStoring == false && hashTable[index].key != key) {
+    while(hashTable[index].key != key) {
         index++;
         if(index >= 40009)
             index = 0;
