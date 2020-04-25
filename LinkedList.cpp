@@ -1,4 +1,4 @@
-#include "LinkedList.h"
+#include "LinkedList.hpp"
 using namespace std;
 
 void LinkedList::insert(int newKey) {
@@ -12,14 +12,14 @@ void LinkedList::insert(int newKey) {
         llNode *lastNode = head;
         while(lastNode->next != NULL)
             lastNode = lastNode->next;
-        llNode *addNode = new Node;
+        llNode *addNode = new llNode;
         addNode->key = newKey;
         addNode->next = NULL;
         lastNode->next = addNode;
     }
 }
 
-Node* LinkedList::searchList(int key) {
+llNode* LinkedList::searchList(int key) {
     llNode *ptr = head;
     while(ptr != NULL && ptr->key != key)
         ptr = ptr->next;

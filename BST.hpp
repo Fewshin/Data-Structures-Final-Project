@@ -2,6 +2,7 @@
 
 struct Node {
     int key;
+    Node *parent;
     Node *left;
     Node *right;
 };

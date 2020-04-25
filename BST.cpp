@@ -1,4 +1,4 @@
-#include "BST.h"
+#include "BST.hpp"
 using namespace std;
 
 BST::BST() {
@@ -11,15 +11,29 @@ Node* addNodeHelper(Node *current, int x) {
         newNode->key = x;
         newNode->left = NULL;
         newNode->right = NULL;
+        newNode->parent = NULL;
         return newNode;
     }
 
     else if(current->key < x) {
         current->right = addNodeHelper(current->right, x);
+        if (current->right == NULL) {
+          printf("Node failed to be created\n");
+          return NULL;
+        }
+        current->right->parent = current;
     }
 
     else if(current->key > x) {
         current->left = addNodeHelper(current->left, x);
+        if (current->left == NULL) {
+          printf("Node failed to be created\n");
+          return NULL;
+        }
+        current->left->parent = current;
+    }
+    else {
+      printf("Key of child node is equal to parent node.\n");
     }
 
     return current;
