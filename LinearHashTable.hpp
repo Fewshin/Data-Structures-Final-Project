@@ -8,11 +8,12 @@ struct lHashNode {
 
 class LinearHashTable {
     private:
-        int tableSize = 40009;
-        lHashNode hashTable[40009];
+        int * tableSize;
+        lHashNode * hashTable;
 
     public:
         LinearHashTable();
-        void insert(int key);
+        int createTable (int size);
+        int insert(int key);
         int search(int key);
 };
