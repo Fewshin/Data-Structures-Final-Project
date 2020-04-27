@@ -41,7 +41,7 @@ vector<long> getData (char letter) { //Note: Only works for vectors
 }
 
 int main () {
-  //printf("Testing speed of table creation for BST\n");
+  printf("Testing speed of table creation for BST\n");
   /*Key for timing variable names:
   S = Start
   C = Creating Table
@@ -57,6 +57,15 @@ int main () {
 
   float * insert = &bst.createTree(testData)[0];
   float * search = &bst.searchTree(testData)[0];
+
+  // code to write to file
+
+  printf("Testing speed of table creation for linked list\n");
+
+  LinkedList ll = LinkedList();
+
+  insert = &ll.createList(testData)[0];
+  search = &ll.searchList(testData)[0];
   
   _testData.clear();
   _testData = getData('B');

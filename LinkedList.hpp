@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 struct llNode {
     int key;
@@ -16,4 +17,6 @@ class LinkedList {
         void insert(int newKey);
         llNode *searchList(int key);
         void printList();
+        std::vector<float> createList(long * input);
+        std::vector<float> searchList(long * input);
 };
