@@ -9,11 +9,12 @@ struct cHashNode {
 
 class ChainHashTable {
     private:
-        int tableSize = 40009;
-        cHashNode hashTable[40009];
+        int * tableSize;
+        cHashNode * hashTable;
     
     public:
         ChainHashTable();
+        int createTable(int size);
         void insert(int key);
         int search(int key);
 };
