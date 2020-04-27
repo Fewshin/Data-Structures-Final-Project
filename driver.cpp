@@ -11,7 +11,7 @@
 #include <cstdlib>
 #include <string>
 
-long * getData (char letter) {
+vector<long> getData (char letter) {
   std::string defaultName = "dataSet";
   defaultName.push_back(letter);
   defaultName = defaultName + ".csv";
@@ -25,7 +25,7 @@ long * getData (char letter) {
   //printf("%s\n",line.c_str());//Holy hell, I just maxed my CPU printing this.
   std::string temp = "";
   //int count = 0;
-  for (int i = 0; i < line.length(); i++) {
+  for (int i = 0; i < (int) line.length(); i++) {
     if (line[i] != ',') {
       temp.push_back(line[i]);
     }
@@ -40,11 +40,11 @@ long * getData (char letter) {
   //count++;
   //printf("|%s\n%d\n",temp.c_str(), count);//Final count is 40,000 as expected.
   //printf("%d\n", (int) store.size());//40,000 again, seems to be working as intended.
-  return &store[0];
+  return store;
 }
 
 int main () {
-  printf("Testing speed of table creation for BST\n");
+  //printf("Testing speed of table creation for BST\n");
   /*Key for timing variable names:
   S = Start
   C = Creating Table
@@ -52,7 +52,9 @@ int main () {
   E = End
   D = Difference/Time taken*/
 
-  long * testData = getData('A');
+  vector<long> _testData = getData('A');
+  long * testData = &_testData[0];
+  //printf("%ld\n", testData[0]);
   BST bst = BST();
 
   float insert[400];

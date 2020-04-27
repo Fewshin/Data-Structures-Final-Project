@@ -6,8 +6,8 @@ LinearHashTable::LinearHashTable() {
 }
 
 int LinearHashTable::createTable (int size) {
-  *tableSize = size;
-  hashTable = new lHashNode[size];
+  tableSize = new int(size);
+  hashTable = new lHashNode[*tableSize];
 }
 
 int LinearHashTable::insert(int key) {

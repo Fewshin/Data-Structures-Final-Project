@@ -8,11 +8,12 @@ struct qHashNode {
 
 class QuadraticHashTable {
     private:
-        int tableSize = 40009;
-        qHashNode hashTable[40009];
+        int * tableSize;
+        qHashNode * hashTable;
 
     public:
         QuadraticHashTable();
-        void insert(int key);
+        int createTable(int size);
+        int insert(int key);
         int search(int key);
 };
