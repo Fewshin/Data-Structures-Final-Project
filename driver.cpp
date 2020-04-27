@@ -11,18 +11,15 @@
 #include <cstdlib>
 #include <string>
 
-vector<long> getData (char letter) {
+vector<long> getData (char letter) { //Note: Only works for vectors
   std::string defaultName = "dataSet";
   defaultName.push_back(letter);
   defaultName = defaultName + ".csv";
   std::vector<long> store;
   std::ifstream data(defaultName);
-  /*Objective: Pull all long ints from the .csv file
-  Push them into the vector, then return the address
-  of the first value in the vector*/
   std::string line;
   std::getline(data, line); 
-  //printf("%s\n",line.c_str());//Holy hell, I just maxed my CPU printing this.
+  //printf("%s\n",line.c_str());
   std::string temp = "";
   //int count = 0;
   for (int i = 0; i < (int) line.length(); i++) {
@@ -53,7 +50,7 @@ int main () {
   D = Difference/Time taken*/
 
   vector<long> _testData = getData('A');
-  long * testData = &_testData[0];
+  long * testData = &_testData[0];//Asignment asks us to use an array
   //printf("%ld\n", testData[0]);
   BST bst = BST();
 
@@ -83,5 +80,10 @@ int main () {
     float avgTime = float(end - start) / (float(CLOCKS_PER_SEC) * 100);
     search[i / 100] = avgTime;
   }
-
+  
+  _testData.clear();
+  _testData = getData('B');
+  testData = &_testData[0];
+  //Code Here
+  _testData.clear();
 }

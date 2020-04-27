@@ -14,7 +14,7 @@ int LinearHashTable::insert(int key) {
     int index = key % *tableSize;
     while(hashTable[index].isStoring == true) {
         index++;
-        if(index >= (*tableSize - 1)) //Adjusted because arrays start at zero
+        if(index >= *tableSize)
             index = 0;
     }
     hashTable[index].isStoring = true;
@@ -26,7 +26,7 @@ int LinearHashTable::search(int key) {
     int index = key % *tableSize;
     while(hashTable[index].isStoring == true) {
         index++;
-        if(index >= (*tableSize - 1)) //See above
+        if(index >= *tableSize)
             index = 0;
     }
     return index;
