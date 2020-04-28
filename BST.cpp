@@ -1,5 +1,6 @@
 #include "BST.hpp"
 #include <time.h>
+#include <chrono>
 using namespace std;
 
 BST::BST() {
@@ -83,18 +84,21 @@ void BST::printTree() {
 vector<float> BST::createTree(long * input) {
     vector<float> insert;
     // clock_t start, end;
-    time_t start, end;
+    // time_t start, end;
 
     for(int i = 0; i < 400; i++) {
         // start = clock();
-        start = time(NULL);
+        // start = time(NULL);
+        auto start = chrono::steady_clock::now();
         for(int j = (i * 100); j < (100 + i * 100); j++) {
             addNode((int) input[j]);
         }
         // end = clock();
-        end = time(NULL);
+        // end = time(NULL);
+        auto end = chrono::steady_clock::now();
 
-        float avgTime = float(end - start) / (float(CLOCKS_PER_SEC) * 100);
+        // float avgTime = float(end - start) / (float(CLOCKS_PER_SEC) * 100);
+        auto avgTime = chrono::duration_cast<chrono::microseconds>((end - start) / 100).count();
         insert.push_back(avgTime);
     }
     return insert;
@@ -103,7 +107,7 @@ vector<float> BST::createTree(long * input) {
 vector<float> BST::searchTree(long * input) {
     vector<float> search;
     // clock_t start, end;
-    time_t start, end;
+    // time_t start, end;
     /*
     for(int i = 0; i < 40000; i++) {
         addNode((int) input[i]);
@@ -114,14 +118,16 @@ vector<float> BST::searchTree(long * input) {
         for(int j = 0; j < 100; j++)
             set[j] = rand() % (i + 100);
         // start = clock();
-        start = time(NULL);
+        // start = time(NULL);
+        auto start = chrono::steady_clock::now();
         for(int k = 0; k < 100; k++) {
             bool t = searchKey(input[set[k]]);
         }
         // end = clock();
-        end = time(NULL);
+        // end = time(NULL);
+        auto end = chrono::steady_clock::now();
         // float avgTime = float(end - start) / (float(CLOCKS_PER_SEC) * 100);
-        float avgTime = float(end - start) / 100;
+        auto avgTime = chrono::duration_cast<chrono::microseconds>((end - start) / 100).count();
         search.push_back(avgTime);
     }
     return search;

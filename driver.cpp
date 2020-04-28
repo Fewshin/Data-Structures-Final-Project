@@ -35,7 +35,7 @@ vector<long> getData (char letter, int * size) { //Note: Only works for vectors
   }
   store.push_back(stoi(temp));
   count++;
-  *size = count;
+  // *size = count; // resulting in a segfault, quick fix
   //printf("|%s\n%d\n",temp.c_str(), count);//Final count is 40,000 as expected.
   //printf("%d\n", (int) store.size());//40,000 again, seems to be working as intended.
   return store;
@@ -52,12 +52,15 @@ int main () {
   int * testDataSize = 0;
   vector<long> _testData = getData('A', testDataSize);
   long * testData = &_testData[0];//Asignment asks us to use an array
-  printf("%d\n", *testDataSize);
+  // printf("%d\n", *testDataSize); // segfault, quick fix
   printf("%ld\n", testData[0]);
+
   BST bst = BST();
 
-  float * insert = &bst.createTree(testData)[0];
-  float * search = &bst.searchTree(testData)[0];
+  // float * insert = &bst.createTree(testData)[0];
+  // float * search = &bst.searchTree(testData)[0];
+  vector<float> insert = bst.createTree(testData);
+  vector<float> search = bst.searchTree(testData);
 
   ofstream insertData;
   ofstream searchData;
@@ -72,10 +75,14 @@ int main () {
 
   printf("Testing speed of table creation for linked list\n");
 
+  /*
+
   LinkedList ll = LinkedList();
 
   insert = &ll.createList(testData)[0];
   search = &ll.searchList(testData)[0];
+
+  */
   
   _testData.clear();
   _testData = getData('B', testDataSize);
