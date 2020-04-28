@@ -42,7 +42,7 @@ vector<long> getData (char letter, int * size) { //Note: Only works for vectors
 }
 
 int main () {
-  //printf("Testing speed of table creation for BST\n");
+  printf("Testing speed of table creation for BST\n");
   /*Key for timing variable names:
   S = Start
   C = Creating Table
@@ -56,32 +56,26 @@ int main () {
   printf("%ld\n", testData[0]);
   BST bst = BST();
 
-  float insert[400];
-  float search[400];
-  clock_t start, end;
+  float * insert = &bst.createTree(testData)[0];
+  float * search = &bst.searchTree(testData)[0];
 
+  ofstream insertData;
+  ofstream searchData;
+  insertData.open("insert_performance_BST_dataSetA.csv");
+  searchData.open("search_performance_BST_dataSetA.csv");
   for(int i = 0; i < 400; i++) {
-    start = clock();
-    for(int j = (i * 100); j < (100 + i * 100); j++) {
-      bst.addNode((int) testData[j]);
-    }
-    end = clock();
-    float avgTime = float(end - start) / (float(CLOCKS_PER_SEC) * 100);
-    insert[i] = avgTime;
+    insertData << insert[i] << "\n";
+    searchData << search[i] << "\n";
   }
+  insertData.close();
+  searchData.close();
 
-  for(int i = 0; i <= 40000; i = i + 100) {
-    int set[100];
-    for(int j = 0; j < 100; j++)
-      set[j] = rand() % (i + 100);
-    start = clock();
-    for(int k = 0; k < 100; k++) {
-      bst.searchKey(set[k]);
-    }
-    end = clock();
-    float avgTime = float(end - start) / (float(CLOCKS_PER_SEC) * 100);
-    search[i / 100] = avgTime;
-  }
+  printf("Testing speed of table creation for linked list\n");
+
+  LinkedList ll = LinkedList();
+
+  insert = &ll.createList(testData)[0];
+  search = &ll.searchList(testData)[0];
   
   _testData.clear();
   _testData = getData('B', testDataSize);
