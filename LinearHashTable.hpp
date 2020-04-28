@@ -13,7 +13,7 @@ class LinearHashTable {
 
     public:
         LinearHashTable();
-        int createTable (int size);
         int insert(int key);
         int search(int key);
+        int createTable (int size, long * input);
 };

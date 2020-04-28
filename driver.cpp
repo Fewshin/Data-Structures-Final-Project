@@ -35,7 +35,7 @@ vector<long> getData (char letter, int * size) { //Note: Only works for vectors
   }
   store.push_back(stoi(temp));
   count++;
-  // *size = count; // resulting in a segfault, quick fix
+  *size = count; // resulting in a segfault, quick fix
   //printf("|%s\n%d\n",temp.c_str(), count);//Final count is 40,000 as expected.
   //printf("%d\n", (int) store.size());//40,000 again, seems to be working as intended.
   return store;
@@ -43,17 +43,11 @@ vector<long> getData (char letter, int * size) { //Note: Only works for vectors
 
 int main () {
   printf("Testing speed of table creation for BST\n");
-  /*Key for timing variable names:
-  S = Start
-  C = Creating Table
-  Z = Searching Table
-  E = End
-  D = Difference/Time taken*/
-  int * testDataSize = 0;
-  vector<long> _testData = getData('A', testDataSize);
+  int testDataSize = 0;
+  vector<long> _testData = getData('A', &testDataSize);
   long * testData = &_testData[0];//Asignment asks us to use an array
-  // printf("%d\n", *testDataSize); // segfault, quick fix
   printf("%ld\n", testData[0]);
+  printf("%d\n", testDataSize);
 
   BST bst = BST();
 
@@ -90,7 +84,7 @@ int main () {
   searchData.close();
   
   _testData.clear();
-  _testData = getData('B', testDataSize);
+  _testData = getData('B', &testDataSize);
   testData = &_testData[0];
   //Code Here
   _testData.clear();
