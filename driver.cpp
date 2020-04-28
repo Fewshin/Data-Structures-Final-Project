@@ -58,7 +58,16 @@ int main () {
   float * insert = &bst.createTree(testData)[0];
   float * search = &bst.searchTree(testData)[0];
 
-  // code to write to file
+  ofstream insertData;
+  ofstream searchData;
+  insertData.open("insert_performance_BST_dataSetA.csv");
+  searchData.open("search_performance_BST_dataSetA.csv");
+  for(int i = 0; i < 400; i++) {
+    insertData << insert[i];
+    searchData << search[i];
+  }
+  insertData.close();
+  searchData.close();
 
   printf("Testing speed of table creation for linked list\n");
 

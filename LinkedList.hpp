@@ -14,7 +14,7 @@ class LinkedList {
         LinkedList() {
             head = NULL;
         }
-        void insert(int newKey);
+        void addToList(int newKey);
         llNode *searchList(int key);
         void printList();
         std::vector<float> createList(long * input);
