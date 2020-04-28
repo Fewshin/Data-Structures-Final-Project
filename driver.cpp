@@ -63,8 +63,8 @@ int main () {
   insertData.open("insert_performance_BST_dataSetA.csv");
   searchData.open("search_performance_BST_dataSetA.csv");
   for(int i = 0; i < 400; i++) {
-    insertData << insert[i];
-    searchData << search[i];
+    insertData << insert[i] << "\n";
+    searchData << search[i] << "\n";
   }
   insertData.close();
   searchData.close();
