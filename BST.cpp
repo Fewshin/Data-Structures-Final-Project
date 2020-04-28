@@ -98,7 +98,7 @@ vector<float> BST::createTree(long * input) {
         auto end = chrono::steady_clock::now();
 
         // float avgTime = float(end - start) / (float(CLOCKS_PER_SEC) * 100);
-        auto avgTime = chrono::duration_cast<chrono::microseconds>((end - start) / 100).count();
+        auto avgTime = chrono::duration_cast<chrono::nanoseconds>((end - start) / 100).count();
         insert.push_back(avgTime);
     }
     return insert;
@@ -127,7 +127,7 @@ vector<float> BST::searchTree(long * input) {
         // end = time(NULL);
         auto end = chrono::steady_clock::now();
         // float avgTime = float(end - start) / (float(CLOCKS_PER_SEC) * 100);
-        auto avgTime = chrono::duration_cast<chrono::microseconds>((end - start) / 100).count();
+        auto avgTime = chrono::duration_cast<chrono::nanoseconds>((end - start) / 100).count();
         search.push_back(avgTime);
     }
     return search;

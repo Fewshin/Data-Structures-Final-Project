@@ -75,14 +75,19 @@ int main () {
 
   printf("Testing speed of table creation for linked list\n");
 
-  /*
-
   LinkedList ll = LinkedList();
 
-  insert = &ll.createList(testData)[0];
-  search = &ll.searchList(testData)[0];
+  insert = ll.createList(testData);
+  search = ll.searchList(testData);
 
-  */
+  insertData.open("insert_performance_LL_dataSetA.csv");
+  searchData.open("search_performance_LL_dataSetA.csv");
+  for(int i = 0; i < 400; i++) {
+    insertData << insert[i] << "\n";
+    searchData << search[i] << "\n";
+  }
+  insertData.close();
+  searchData.close();
   
   _testData.clear();
   _testData = getData('B', testDataSize);

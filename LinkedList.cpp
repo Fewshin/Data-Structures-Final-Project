@@ -1,4 +1,5 @@
 #include "LinkedList.hpp"
+#include <chrono>
 using namespace std;
 
 void LinkedList::addToList(int newKey) {
@@ -37,15 +38,14 @@ void LinkedList::printList() {
 
 vector<float> LinkedList::createList(long * input) {
     vector<float> insert;
-    clock_t start, end;
 
     for(int i = 0; i < 400; i++) {
-        start = clock();
+        auto start = chrono::steady_clock::now();
         for(int j = (i * 100); j < (100 + i * 100); j++) {
             addToList((int) input[j]);
         }
-        end = clock();
-        float avgTime = float(end - start) / (float(CLOCKS_PER_SEC) * 100);
+        auto end = chrono::steady_clock::now();
+        auto avgTime = chrono::duration_cast<chrono::nanoseconds>((end - start) / 100).count();
         insert.push_back(avgTime);
     }
     return insert;
@@ -53,7 +53,6 @@ vector<float> LinkedList::createList(long * input) {
 
 vector<float> LinkedList::searchList(long * input) {
     vector<float> search;
-    clock_t start, end;
 
     for(int i = 0; i < 40000; i++) {
         addToList((int) input[i]);
@@ -63,12 +62,12 @@ vector<float> LinkedList::searchList(long * input) {
         int set[100];
         for(int j = 0; j < 100; j++)
             set[j] = rand() % (i + 100);
-        start = clock();
+        auto start = chrono::steady_clock::now();
         for(int k = 0; k < 100; k++) {
             bool t = searchList(set[k]);
         }
-        end = clock();
-        float avgTime = float(end - start) / (float(CLOCKS_PER_SEC) * 100);
+        auto end = chrono::steady_clock::now();
+        auto avgTime = chrono::duration_cast<chrono::nanoseconds>((end - start) / 100).count();
         search.push_back(avgTime);
     }
     return search;
