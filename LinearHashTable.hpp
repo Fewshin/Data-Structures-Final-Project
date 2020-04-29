@@ -11,12 +11,8 @@ class LinearHashTable {
     private:
         int * tableSize;
         lHashNode * hashTable;
-        int insertCollisions[400];
-        int searchCollisions[400];
-        for(int i = 0; i < 400; i++) {
-            insertCollisions[i] = 0;
-            searchCollisions[i] = 0;
-        }
+        vector<int> insertCollisions;
+        vector<int> searchCollisions;
 
     public:
         LinearHashTable();
