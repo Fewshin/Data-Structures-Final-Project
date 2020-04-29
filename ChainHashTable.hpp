@@ -11,10 +11,10 @@ class ChainHashTable {
     private:
         int * tableSize;
         cHashNode * hashTable;
-    
+        vector<int> createCollisionCounts;
     public:
         ChainHashTable();
-        void insert(int key);
+        void insert(int key, int trialNum);
         int search(int key);
-        int createTable(int size, long * input);
+        vector<float> createTable(int size, long * input);
 };

@@ -1,0 +1,1 @@
+g++ -Wall -Wextra -g driver.cpp LinearHashTable.cpp BST.cpp LinkedList.cpp QuadraticHashTable.cpp ChainHashTable.cpp -o a
