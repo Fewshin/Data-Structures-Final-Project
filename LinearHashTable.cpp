@@ -6,10 +6,11 @@ LinearHashTable::LinearHashTable() {
   hashTable = NULL;
 }
 
-int LinearHashTable::insert(int key) {
+int LinearHashTable::insert(int key, int collIndex) {
     int index = key % *tableSize;
     while(hashTable[index].isStoring == true) {
         index++;
+        insertCollisions[collIndex]++;
         if(index >= *tableSize)
             index = 0;
     }
@@ -18,10 +19,11 @@ int LinearHashTable::insert(int key) {
     return 0;
 }
 
-int LinearHashTable::search(int key) {
+int LinearHashTable::search(int key, int collIndex) {
     int index = key % *tableSize;
     while(hashTable[index].isStoring == true) {
         index++;
+        searchCollisions[collIndex]++;
         if(index >= *tableSize)
             index = 0;
     }
@@ -35,7 +37,7 @@ vector<float> LinearHashTable::createTable (int size, long * input) {
   for(int j = 0; j < 400; j++) {
     auto sTime = chrono::steady_clock::now();
     for (int i = (j * 100); i < (100 + j * 100); i++) {
-      insert((int) *(input + i));
+      insert((int) *(input + i), j);
     }
     auto eTime = chrono::steady_clock::now();
     auto avgTime = chrono::duration_cast<chrono::nanoseconds>((eTime - sTime) / 100).count();
@@ -59,4 +61,12 @@ vector<float> LinearHashTable::searchTable (long * input) {
     searchData.push_back(avgTime);
   }
   return searchData;
+}
+
+int LinearHashTable::numOfInsertCollisions(int index) {
+  return insertCollisions[index];
+}
+
+int LinearHashTable::numOfSearchCollisions(int index) {
+  return searchCollisions[index];
 }

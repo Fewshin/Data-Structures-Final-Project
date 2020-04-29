@@ -90,6 +90,14 @@ int main () {
   }
   insertData.close();
   searchData.close();
+  insertData.open("insert_collisions_LHT_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  searchData.open("search_collisions_LHT_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  for(int i = 0; i < 400; i++) {
+    insertData << lht_A.numOfInsertCollisions(i) << "\n";
+    searchData << lht_A.numOfSearchCollisions(i) << "\n";
+  }
+  insertData.close();
+  searchData.close();
 
   _testData.clear();
   _testData = getData('B');
@@ -140,6 +148,14 @@ int main () {
   for(int i = 0; i < 400; i++) {
     insertData << insert[i] << "\n";
     searchData << search[i] << "\n";
+  }
+  insertData.close();
+  searchData.close();
+  insertData.open("insert_collisions_LHT_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  searchData.open("search_collisions_LHT_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  for(int i = 0; i < 400; i++) {
+    insertData << lht_B.numOfInsertCollisions(i) << "\n";
+    searchData << lht_B.numOfSearchCollisions(i) << "\n";
   }
   insertData.close();
   searchData.close();
