@@ -123,6 +123,30 @@ int main () {
   insertData.close();
   searchData.close();
 
+  ChainHashTable cht_A = ChainHashTable();
+
+  printf("Testing speed of table A creation for chain hash table\n");
+  insert = cht_A.createTable(testDataSize, testData);
+  printf("Testing speed of table A searching for chain hash table\n");
+  search = cht_A.searchTable(testDataSize, testData);
+
+  insertData.open("insert_performance_CHT_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  searchData.open("search_performance_CHT_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  for(int i = 0; i < testDataSize/100; i++) {
+    insertData << insert[i] << "\n";
+    searchData << search[i] << "\n";
+  }
+  insertData.close();
+  searchData.close();
+
+  insertData.open("insert_collisions_CHT_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  searchData.open("search_collisions_CHT_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  for(int i = 0; i < testDataSize/100; i++) {
+    insertData << cht_A.numOfInsertCollisions(i) << "\n";
+    searchData << cht_A.numOfSearchCollisions(i) << "\n";
+  }
+  insertData.close();
+  searchData.close();
 
 
 
@@ -136,6 +160,7 @@ int main () {
 
 
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   _testData.clear();
   _testData = getData('B');
   testData = &_testData[0];
@@ -217,6 +242,31 @@ int main () {
   for(int i = 0; i < 400; i++) {
     insertData << qht_B.numOfInsertCollisions(i) << "\n";
     searchData << qht_B.numOfSearchCollisions(i) << "\n";
+  }
+  insertData.close();
+  searchData.close();
+
+  ChainHashTable cht_B = ChainHashTable();
+
+  printf("Testing speed of table B creation for chain hash table\n");
+  insert = cht_A.createTable(testDataSize, testData);
+  printf("Testing speed of table B searching for chain hash table\n");
+  search = cht_A.searchTable(testDataSize, testData);
+
+  insertData.open("insert_performance_CHT_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  searchData.open("search_performance_CHT_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  for(int i = 0; i < testDataSize/100; i++) {
+    insertData << insert[i] << "\n";
+    searchData << search[i] << "\n";
+  }
+  insertData.close();
+  searchData.close();
+
+  insertData.open("insert_collisions_CHT_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  searchData.open("search_collisions_CHT_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  for(int i = 0; i < testDataSize/100; i++) {
+    insertData << cht_B.numOfInsertCollisions(i) << "\n";
+    searchData << cht_B.numOfSearchCollisions(i) << "\n";
   }
   insertData.close();
   searchData.close();
