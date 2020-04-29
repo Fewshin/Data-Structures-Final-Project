@@ -29,12 +29,12 @@ int LinearHashTable::search(int key) {
 }
 
 int LinearHashTable::createTable (int size, long * input) {
-  int sTime = time(NULL);
+  auto sTime = chrono::steady_clock::now();
   tableSize = new int(size);
   hashTable = new lHashNode[*tableSize];
   for (int i = 0; i < size; i++) {
     insert((int) *(input + i));
   }
-  int eTime = time(NULL);
-  return eTime - sTime;
+  auto eTime = chrono::steady_clock::now();
+  return chrono::duration_cast<chrono::nanoseconds>((eTime - sTime) / 100).count();
 }

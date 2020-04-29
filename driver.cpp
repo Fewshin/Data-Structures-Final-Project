@@ -11,7 +11,7 @@
 #include <cstdlib>
 #include <string>
 
-vector<long> getData (char letter, int * size) { //Note: Only works for vectors
+vector<long> getData (char letter/*,int * size*/) { //Note: Only works for vectors
   std::string defaultName = "dataSet";
   defaultName.push_back(letter);
   defaultName = defaultName + ".csv";
@@ -21,7 +21,7 @@ vector<long> getData (char letter, int * size) { //Note: Only works for vectors
   std::getline(data, line); 
   //printf("%s\n",line.c_str());
   std::string temp = "";
-  int count = 0;
+  //int count = 0;
   for (int i = 0; i < (int) line.length(); i++) {
     if (line[i] != ',') {
       temp.push_back(line[i]);
@@ -29,13 +29,13 @@ vector<long> getData (char letter, int * size) { //Note: Only works for vectors
     if (line[i] == ',') {
       store.push_back(stoi(temp));
       //printf(temp.c_str());
-      count++;
+      //count++;
       temp = "";
     }
   }
   store.push_back(stoi(temp));
-  count++;
-  *size = count; // resulting in a segfault, quick fix
+  //count++;
+  //*size = count;
   //printf("|%s\n%d\n",temp.c_str(), count);//Final count is 40,000 as expected.
   //printf("%d\n", (int) store.size());//40,000 again, seems to be working as intended.
   return store;
@@ -43,9 +43,9 @@ vector<long> getData (char letter, int * size) { //Note: Only works for vectors
 
 int main () {
   printf("Testing speed of table creation for BST\n");
-  int testDataSize = 0;
-  vector<long> _testData = getData('A', &testDataSize);
+  vector<long> _testData = getData('A');
   long * testData = &_testData[0];//Asignment asks us to use an array
+  int testDataSize = _testData.size();
   printf("%ld\n", testData[0]);
   printf("%d\n", testDataSize);
 
@@ -84,8 +84,9 @@ int main () {
   searchData.close();
   
   _testData.clear();
-  _testData = getData('B', &testDataSize);
+  _testData = getData('B');
   testData = &_testData[0];
+  testDataSize = _testData.size();
   //Code Here
   _testData.clear();
 }
