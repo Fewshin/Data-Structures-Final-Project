@@ -56,7 +56,7 @@ vector<float> LinearHashTable::searchTable (long * input) {
       set[j] = rand() % (i + 100);
     auto start = chrono::steady_clock::now();
     for(int k = 0; k < 100; k++) {
-      int t = search(input[set[k]]);
+      int t = search(input[set[k]], i/100);
     }
     auto end = chrono::steady_clock::now();
     auto avgTime = chrono::duration_cast<chrono::nanoseconds>((end - start) / 100).count();
