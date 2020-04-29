@@ -2,11 +2,15 @@
 a
 insert_performance_BST_dataSetA.csv
 insert_performance_BST_dataSetB.csv
+insert_performance_LHT_dataSetA.csv
+insert_performance_LHT_dataSetB.csv
 insert_performance_LL_dataSetA.csv
 insert_performance_LL_dataSetB.csv
 insert_search_performance_linked_list_dataSetA.csv
 search_performance_BST_dataSetA.csv
 search_performance_BST_dataSetB.csv
+search_performance_LHT_dataSetA.csv
+search_performance_LHT_dataSetB.csv
 search_performance_LL_dataSetA.csv
 search_performance_LL_dataSetB.csv
 driver

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 struct lHashNode {
@@ -15,5 +16,6 @@ class LinearHashTable {
         LinearHashTable();
         int insert(int key);
         int search(int key);
-        int createTable (int size, long * input);
+        std::vector<float> createTable (int size, long * input);
+        std::vector<float> searchTable (long * input);
 };

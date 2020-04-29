@@ -75,6 +75,22 @@ int main () {
   insertData.close();
   searchData.close();
 
+  printf("Testing speed of table A creation for linear hash table\n");
+
+  LinearHashTable lht_A = LinearHashTable();
+
+  insert = lht_A.createTable(40009, testData);
+  search = lht_A.searchTable(testData);
+
+  insertData.open("insert_performance_LHT_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  searchData.open("search_performance_LHT_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  for(int i = 0; i < 400; i++) {
+    insertData << insert[i] << "\n";
+    searchData << search[i] << "\n";
+  }
+  insertData.close();
+  searchData.close();
+
   _testData.clear();
   _testData = getData('B');
   testData = &_testData[0];
@@ -112,8 +128,22 @@ int main () {
   insertData.close();
   searchData.close();
 
+  printf("Testing speed of table B creation for linear hash table\n");
+
+  LinearHashTable lht_B = LinearHashTable();
+
+  insert = lht_B.createTable(40009, testData);
+  search = lht_B.searchTable(testData);
+
+  insertData.open("insert_performance_LHT_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  searchData.open("search_performance_LHT_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  for(int i = 0; i < 400; i++) {
+    insertData << insert[i] << "\n";
+    searchData << search[i] << "\n";
+  }
+  insertData.close();
+  searchData.close();
 
 
-  //Code Here
   _testData.clear();
 }

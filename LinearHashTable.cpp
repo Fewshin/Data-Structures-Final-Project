@@ -28,13 +28,35 @@ int LinearHashTable::search(int key) {
     return index;
 }
 
-int LinearHashTable::createTable (int size, long * input) {
+vector<float> LinearHashTable::createTable (int size, long * input) {
+  vector<float> insertData;
   tableSize = new int(size);
   hashTable = new lHashNode[*tableSize];
-  auto sTime = chrono::steady_clock::now();
-  for (int i = 0; i < size; i++) {
-    insert((int) *(input + i));
+  for(int j = 0; j < 400; j++) {
+    auto sTime = chrono::steady_clock::now();
+    for (int i = (j * 100); i < (100 + j * 100); i++) {
+      insert((int) *(input + i));
+    }
+    auto eTime = chrono::steady_clock::now();
+    auto avgTime = chrono::duration_cast<chrono::nanoseconds>((eTime - sTime) / 100).count();
+    insertData.push_back(avgTime);
   }
-  auto eTime = chrono::steady_clock::now();
-  return chrono::duration_cast<chrono::nanoseconds>((eTime - sTime) / 100).count();
+  return insertData;
+}
+
+vector<float> LinearHashTable::searchTable (long * input) {
+  vector<float> searchData;
+  for(int i = 0; i <= 40000; i = i + 100) {
+    int set[100];
+    for(int j = 0; j < 100; j++)
+      set[j] = rand() % (i + 100);
+    auto start = chrono::steady_clock::now();
+    for(int k = 0; k < 100; k++) {
+      int t = search(input[set[k]]);
+    }
+    auto end = chrono::steady_clock::now();
+    auto avgTime = chrono::duration_cast<chrono::nanoseconds>((end - start) / 100).count();
+    searchData.push_back(avgTime);
+  }
+  return searchData;
 }
