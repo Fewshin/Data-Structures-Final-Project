@@ -99,6 +99,43 @@ int main () {
   insertData.close();
   searchData.close();
 
+  printf("Testing speed of table A creation for quadratic hash table\n");
+
+  QuadraticHashTable qht_A = QuadraticHashTable();
+
+  insert = qht_A.createTable(40009, testData);
+  search = qht_A.searchTable(testData);
+
+  insertData.open("insert_performance_QHT_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  searchData.open("search_performance_QHT_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  for(int i = 0; i < 400; i++) {
+    insertData << insert[i] << "\n";
+    searchData << search[i] << "\n";
+  }
+  insertData.close();
+  searchData.close();
+  insertData.open("insert_collisions_QHT_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  searchData.open("search_collisions_QHT_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  for(int i = 0; i < 400; i++) {
+    insertData << qht_A.numOfInsertCollisions(i) << "\n";
+    searchData << qht_A.numOfSearchCollisions(i) << "\n";
+  }
+  insertData.close();
+  searchData.close();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   _testData.clear();
   _testData = getData('B');
   testData = &_testData[0];
@@ -156,6 +193,30 @@ int main () {
   for(int i = 0; i < 400; i++) {
     insertData << lht_B.numOfInsertCollisions(i) << "\n";
     searchData << lht_B.numOfSearchCollisions(i) << "\n";
+  }
+  insertData.close();
+  searchData.close();
+
+  printf("Testing speed of table A creation for quadratic hash table\n");
+
+  QuadraticHashTable qht_B = QuadraticHashTable();
+
+  insert = qht_B.createTable(40009, testData);
+  search = qht_B.searchTable(testData);
+
+  insertData.open("insert_performance_QHT_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  searchData.open("search_performance_QHT_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  for(int i = 0; i < 400; i++) {
+    insertData << insert[i] << "\n";
+    searchData << search[i] << "\n";
+  }
+  insertData.close();
+  searchData.close();
+  insertData.open("insert_collisions_QHT_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  searchData.open("search_collisions_QHT_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  for(int i = 0; i < 400; i++) {
+    insertData << qht_B.numOfInsertCollisions(i) << "\n";
+    searchData << qht_B.numOfSearchCollisions(i) << "\n";
   }
   insertData.close();
   searchData.close();
