@@ -20,7 +20,7 @@ Node* addNodeHelper(Node *current, int x) {
     else if(current->key < x) {
         current->right = addNodeHelper(current->right, x);
         if (current->right == NULL) {
-          printf("Node failed to be created\n");
+          //printf("Node failed to be created\n");
           return NULL;
         }
         current->right->parent = current;
@@ -29,13 +29,13 @@ Node* addNodeHelper(Node *current, int x) {
     else if(current->key > x) {
         current->left = addNodeHelper(current->left, x);
         if (current->left == NULL) {
-          printf("Node failed to be created\n");
+          //printf("Node failed to be created\n");
           return NULL;
         }
         current->left->parent = current;
     }
     else {
-      printf("Key of child node is equal to parent node.\n");
+      //printf("Key of child node is equal to parent node.\n");
     }
 
     return current;
