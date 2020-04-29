@@ -14,7 +14,7 @@ class ChainHashTable {
     
     public:
         ChainHashTable();
-        int createTable(int size);
         void insert(int key);
         int search(int key);
+        int createTable(int size, long * input);
 };

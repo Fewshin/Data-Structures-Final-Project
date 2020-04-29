@@ -1,13 +1,9 @@
 #include "QuadraticHashTable.hpp"
+#include <chrono>
 
 QuadraticHashTable::QuadraticHashTable() {
   tableSize = NULL;
   hashTable = NULL;
-}
-
-int QuadraticHashTable::createTable (int size) {
-  tableSize = new int(size);
-  hashTable = new qHashNode[*tableSize];
 }
 
 int QuadraticHashTable::insert(int key) {
@@ -31,4 +27,15 @@ int QuadraticHashTable::search(int key) {
         index = (index + i * i) % *tableSize;
     }
     return index;
+}
+
+int QuadraticHashTable::createTable (int size, long * input) {
+  tableSize = new int(size);
+  hashTable = new qHashNode[*tableSize];
+  auto sTime = chrono::steady_clock::now();
+  for (int i = 0; i < size; i++) {
+    insert((int) *(input + i));
+  }
+  auto eTime = chrono::steady_clock::now();
+  return chrono::duration_cast<chrono::nanoseconds>((eTime - sTime) / 100).count();
 }

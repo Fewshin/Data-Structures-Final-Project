@@ -13,7 +13,7 @@ class QuadraticHashTable {
 
     public:
         QuadraticHashTable();
-        int createTable(int size);
         int insert(int key);
         int search(int key);
+        int createTable(int size, long * input);
 };

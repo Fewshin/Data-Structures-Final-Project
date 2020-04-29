@@ -11,7 +11,7 @@
 #include <cstdlib>
 #include <string>
 
-vector<long> getData (char letter/*,int * size*/) { //Note: Only works for vectors
+vector<long> getData (char letter) {
   std::string defaultName = "dataSet";
   defaultName.push_back(letter);
   defaultName = defaultName + ".csv";
@@ -19,32 +19,24 @@ vector<long> getData (char letter/*,int * size*/) { //Note: Only works for vecto
   std::ifstream data(defaultName);
   std::string line;
   std::getline(data, line); 
-  //printf("%s\n",line.c_str());
   std::string temp = "";
-  //int count = 0;
   for (int i = 0; i < (int) line.length(); i++) {
     if (line[i] != ',') {
       temp.push_back(line[i]);
     }
     if (line[i] == ',') {
       store.push_back(stoi(temp));
-      //printf(temp.c_str());
-      //count++;
       temp = "";
     }
   }
   store.push_back(stoi(temp));
-  //count++;
-  //*size = count;
-  //printf("|%s\n%d\n",temp.c_str(), count);//Final count is 40,000 as expected.
-  //printf("%d\n", (int) store.size());//40,000 again, seems to be working as intended.
   return store;
 }
 
 int main () {
   printf("Testing speed of table creation for BST\n");
   vector<long> _testData = getData('A');
-  long * testData = &_testData[0];//Asignment asks us to use an array
+  long * testData = &_testData[0];
   int testDataSize = _testData.size();
   printf("%ld\n", testData[0]);
   printf("%d\n", testDataSize);
@@ -58,8 +50,8 @@ int main () {
 
   ofstream insertData;
   ofstream searchData;
-  insertData.open("insert_performance_BST_dataSetA.csv");
-  searchData.open("search_performance_BST_dataSetA.csv");
+  insertData.open("insert_performance_BST_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  searchData.open("search_performance_BST_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
   for(int i = 0; i < 400; i++) {
     insertData << insert[i] << "\n";
     searchData << search[i] << "\n";
@@ -74,14 +66,16 @@ int main () {
   insert = ll.createList(testData);
   search = ll.searchList(testData);
 
-  insertData.open("insert_performance_LL_dataSetA.csv");
-  searchData.open("search_performance_LL_dataSetA.csv");
+  insertData.open("insert_performance_LL_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
+  searchData.open("search_performance_LL_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
   for(int i = 0; i < 400; i++) {
     insertData << insert[i] << "\n";
     searchData << search[i] << "\n";
   }
   insertData.close();
   searchData.close();
+
+
   
   _testData.clear();
   _testData = getData('B');
