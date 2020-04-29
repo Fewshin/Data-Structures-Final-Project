@@ -35,12 +35,14 @@ vector<float> ChainHashTable::createTable(int size, long * input) {
   auto sTime = chrono::steady_clock::now();
   for (int i = 0; i < size; i++) {
     insert((int) *(input + i), trialNum);
-    if (i%100 == 0) {
+    if (i + 1%100 == 0) {
       auto eTime = chrono::steady_clock::now();
       store.push_back((float) chrono::duration_cast<chrono::nanoseconds>((eTime - sTime) / 100).count());
-      trialNum++;
-      createCollisionCounts.push_back(0);
-      sTime = chrono::steady_clock::now();
+      if ((i + 1) != size) {
+        trialNum++;
+        createCollisionCounts.push_back(0);
+        sTime = chrono::steady_clock::now();
+      }
     }
   }
   return store;
@@ -54,12 +56,14 @@ vector<float> ChainHashTable::searchTable(int size, long * input) {
   auto sTime = chrono::steady_clock::now();
   for (int i = 0; i < size; i++) {
     search(input[i], trialNum);
-    if (i%100 == 0) {
+    if (i + 1%100 == 0) {
       auto eTime = chrono::steady_clock::now();
       store.push_back((float) chrono::duration_cast<chrono::nanoseconds>((eTime - sTime) / 100).count());
-      trialNum++;
-      searchCollisionCounts.push_back(0);
-      sTime = chrono::steady_clock::now();
+      if ((i + 1) != size) {
+        trialNum++;
+        searchCollisionCounts.push_back(0);
+        sTime = chrono::steady_clock::now();
+      }
     }
   }
   return store;
