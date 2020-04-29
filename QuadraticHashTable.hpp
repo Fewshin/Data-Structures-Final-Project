@@ -11,8 +11,8 @@ class QuadraticHashTable {
     private:
         int * tableSize;
         qHashNode * hashTable;
-        vector<int> insertCollisions[400];
-        vector<int> searchCollisions[400];
+        vector<int> insertCollisions;
+        vector<int> searchCollisions;
 
     public:
         QuadraticHashTable();

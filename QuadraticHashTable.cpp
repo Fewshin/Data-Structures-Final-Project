@@ -64,7 +64,7 @@ vector<float> QuadraticHashTable::searchTable(long * input) {
   return searchData;
 }
 
-int QuadrdaticHashTable::numOfInsertCollisions(int index) {
+int QuadraticHashTable::numOfInsertCollisions(int index) {
   return insertCollisions[index];
 }
 

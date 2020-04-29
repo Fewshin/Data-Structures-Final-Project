@@ -20,4 +20,6 @@ class ChainHashTable {
         int search(int key, int trialNum);
         vector<float> createTable(int size, long * input);
         vector<float> searchTable(int size, long * input);
+        int numOfInsertCollisions(int index);
+        int numOfSearchCollisions(int index);
 };
