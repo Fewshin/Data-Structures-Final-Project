@@ -36,6 +36,7 @@ vector<float> QuadraticHashTable::createTable (int size, long * input) {
   tableSize = new int(size);
   hashTable = new qHashNode[*tableSize];
   for(int j = 0; j < 400; j++) {
+    insertCollisions.push_back(0);
     auto sTime = chrono::steady_clock::now();
     for(int i = (j * 100); i < (100 + j * 100); i++) {
       insert((int) *(input + i), j);
@@ -53,6 +54,7 @@ vector<float> QuadraticHashTable::searchTable(long * input) {
     int set[100];
     for(int j = 0; j < 100; j++)
       set[j] = rand() % (i + 100);
+    searchCollisions.push_back(0);
     auto start = chrono::steady_clock::now();
     for(int k = 0; k < 100; k++) {
       int t = search(input[set[k]], i/100);
