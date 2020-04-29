@@ -29,9 +29,9 @@ int LinearHashTable::search(int key) {
 }
 
 int LinearHashTable::createTable (int size, long * input) {
-  auto sTime = chrono::steady_clock::now();
   tableSize = new int(size);
   hashTable = new lHashNode[*tableSize];
+  auto sTime = chrono::steady_clock::now();
   for (int i = 0; i < size; i++) {
     insert((int) *(input + i));
   }
