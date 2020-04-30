@@ -9,7 +9,7 @@ ChainHashTable::ChainHashTable() {
 
 void ChainHashTable::insert(int key, int trialNum) {
   int index = key % *tableSize;
-  cHashNode *check = (hashTable + index);//Line is sus but don't want to redo if I don't have to.
+  cHashNode *check = (hashTable + index);
   while(check->isStoring == true) {
     createCollisionCounts[trialNum]++;
     if (check->next == NULL) {
@@ -48,7 +48,6 @@ vector<float> ChainHashTable::createTable(int size, long * input) {
       }
     }
   }
-  //printf("%d\n", (int) createCollisionCounts.size());
   return store;
 }
 

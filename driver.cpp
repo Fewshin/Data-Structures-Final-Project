@@ -1,6 +1,5 @@
 #include "BST.hpp"
 #include "ChainHashTable.hpp"
-//#include "hash.hpp" 
 #include "LinearHashTable.hpp" 
 #include "LinkedList.hpp"
 #include "QuadraticHashTable.hpp"
@@ -11,7 +10,7 @@
 #include <cstdlib>
 #include <string>
 
-vector<long> getData (char letter) {
+vector<long> getData (char letter) { //Pulls data from the first row in .csv files
   std::string defaultName = "dataSet";
   defaultName.push_back(letter);
   defaultName = defaultName + ".csv";
@@ -40,8 +39,6 @@ int main () {
   int testDataSize = _testData.size();
   BST bst_A = BST();
 
-  // float * insert = &bst.createTree(testData)[0];
-  // float * search = &bst.searchTree(testData)[0];
   vector<float> insert = bst_A.createTree(testData);
 
   printf("Testing speed of table A searching for BST\n");
@@ -160,19 +157,8 @@ int main () {
   insertData.close();
   searchData.close();
 
-
-
-
-
-
-
-
-
-
-
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
   _testData.clear();
   _testData = getData('B');
   testData = &_testData[0];
