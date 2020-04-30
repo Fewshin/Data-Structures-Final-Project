@@ -243,13 +243,13 @@ int main () {
   insertData.close();
   searchData.close();
 
-  printf("Testing speed of table A creation for quadratic hash table\n");
+  printf("Testing speed of table B creation for quadratic hash table\n");
 
   QuadraticHashTable qht_B = QuadraticHashTable();
 
   insert = qht_B.createTable(40009, testData);
 
-  printf("Testing speed of table A searching for quadratic hash table\n");
+  printf("Testing speed of table B searching for quadratic hash table\n");
 
   search = qht_B.searchTable(testData);
 
