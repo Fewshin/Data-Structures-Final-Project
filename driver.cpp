@@ -43,6 +43,9 @@ int main () {
   // float * insert = &bst.createTree(testData)[0];
   // float * search = &bst.searchTree(testData)[0];
   vector<float> insert = bst_A.createTree(testData);
+
+  printf("Testing speed of table A searching for BST\n");
+
   vector<float> search = bst_A.searchTree(testData);
 
   ofstream insertData;
