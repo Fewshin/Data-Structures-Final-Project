@@ -43,7 +43,7 @@ Node* addNodeHelper(Node *current, int x) {
 
 void BST::addNode(int x) {
     root = addNodeHelper(root, x);
-    cout << x << " has been added" << endl;
+    //cout << x << " has been added" << endl;
 }
 
 Node* searchKeyHelper(Node *current, int x) {

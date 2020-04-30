@@ -37,7 +37,6 @@ vector<float> LinearHashTable::createTable (int size, long * input) {
   for(int j = 0; j < 400; j++) {
     insertCollisions.push_back(0);
     auto sTime = chrono::steady_clock::now();
-    insertCollisions.push_back(0);
     for (int i = (j * 100); i < (100 + j * 100); i++) {
       insert((int) *(input + i), j);
     }
@@ -52,7 +51,6 @@ vector<float> LinearHashTable::searchTable (long * input) {
   vector<float> searchData;
   for(int i = 0; i <= 40000; i = i + 100) {
     int set[100];
-    searchCollisions.push_back(0);
     for(int j = 0; j < 100; j++)
       set[j] = rand() % (i + 100);
     searchCollisions.push_back(0);

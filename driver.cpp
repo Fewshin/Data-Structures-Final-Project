@@ -38,9 +38,6 @@ int main () {
   vector<long> _testData = getData('A');
   long * testData = &_testData[0];
   int testDataSize = _testData.size();
-  printf("%ld\n", testData[0]);
-  printf("%d\n", testDataSize);
-
   BST bst_A = BST();
 
   // float * insert = &bst.createTree(testData)[0];
@@ -249,9 +246,9 @@ int main () {
   ChainHashTable cht_B = ChainHashTable();
 
   printf("Testing speed of table B creation for chain hash table\n");
-  insert = cht_A.createTable(testDataSize, testData);
+  insert = cht_B.createTable(testDataSize, testData);
   printf("Testing speed of table B searching for chain hash table\n");
-  search = cht_A.searchTable(testDataSize, testData);
+  search = cht_B.searchTable(testDataSize, testData);
 
   insertData.open("insert_performance_CHT_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
   searchData.open("search_performance_CHT_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
