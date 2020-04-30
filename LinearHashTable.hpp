@@ -1,3 +1,8 @@
+/* Authors:
+ - Felix Pawlowski (functions, bug fixes, writing to files)
+ - Kenneth Strieker (functions, function timing)
+*/
+
 #include <iostream>
 #include <vector>
 using namespace std;

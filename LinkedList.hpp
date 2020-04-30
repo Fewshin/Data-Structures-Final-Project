@@ -1,3 +1,9 @@
+/*
+Authors:
+- Felix Pawlowski (function timing, bug fixes, retrieving file data)
+- Kenneth Strieker (functions, writing to files)
+*/
+
 #include <iostream>
 #include <vector>
 
