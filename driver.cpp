@@ -61,6 +61,9 @@ int main () {
   LinkedList ll_A = LinkedList();
 
   insert = ll_A.createList(testData);
+
+  printf("Testing speed of table A searching for linked list\n");
+
   search = ll_A.searchList(testData);
 
   insertData.open("insert_performance_LL_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
@@ -77,6 +80,9 @@ int main () {
   LinearHashTable lht_A = LinearHashTable();
 
   insert = lht_A.createTable(40009, testData);
+
+  printf("Testing speed of table A searching for linear hash table\n");
+
   search = lht_A.searchTable(testData);
 
   insertData.open("insert_performance_LHT_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
@@ -101,6 +107,9 @@ int main () {
   QuadraticHashTable qht_A = QuadraticHashTable();
 
   insert = qht_A.createTable(40009, testData);
+
+  printf("Testing speed of table A searching for quadratic hash table\n");
+
   search = qht_A.searchTable(testData);
 
   insertData.open("insert_performance_QHT_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
@@ -123,9 +132,12 @@ int main () {
   ChainHashTable cht_A = ChainHashTable();
 
   printf("Testing speed of table A creation for chain hash table\n");
-  insert = cht_A.createTable(testDataSize, testData);
+
+  insert = cht_A.createTable(40009, testData);
+
   printf("Testing speed of table A searching for chain hash table\n");
-  search = cht_A.searchTable(testDataSize, testData);
+
+  search = cht_A.searchTable(40009, testData);
 
   insertData.open("insert_performance_CHT_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
   searchData.open("search_performance_CHT_dataSetA.csv", std::fstream::in | std::fstream::out | std::fstream::app);
@@ -168,6 +180,9 @@ int main () {
   BST bst_B = BST();
 
   insert = bst_B.createTree(testData);
+
+  printf("Testing speed of table B searching for BST\n");
+
   search = bst_B.searchTree(testData);
 
   insertData.open("insert_performance_BST_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
@@ -184,6 +199,9 @@ int main () {
   LinkedList ll_B = LinkedList();
 
   insert = ll_B.createList(testData);
+
+  printf("Testing speed of table B searching for linked list\n");
+
   search = ll_B.searchList(testData);
 
   insertData.open("insert_performance_LL_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
@@ -200,6 +218,9 @@ int main () {
   LinearHashTable lht_B = LinearHashTable();
 
   insert = lht_B.createTable(40009, testData);
+  
+  printf("Testing speed of table B searching for linear hash table\n");
+
   search = lht_B.searchTable(testData);
 
   insertData.open("insert_performance_LHT_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
@@ -224,6 +245,9 @@ int main () {
   QuadraticHashTable qht_B = QuadraticHashTable();
 
   insert = qht_B.createTable(40009, testData);
+
+  printf("Testing speed of table A searching for quadratic hash table\n");
+
   search = qht_B.searchTable(testData);
 
   insertData.open("insert_performance_QHT_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
@@ -246,9 +270,12 @@ int main () {
   ChainHashTable cht_B = ChainHashTable();
 
   printf("Testing speed of table B creation for chain hash table\n");
-  insert = cht_B.createTable(testDataSize, testData);
+
+  insert = cht_B.createTable(40009, testData);
+
   printf("Testing speed of table B searching for chain hash table\n");
-  search = cht_B.searchTable(testDataSize, testData);
+
+  search = cht_B.searchTable(40009, testData);
 
   insertData.open("insert_performance_CHT_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
   searchData.open("search_performance_CHT_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
@@ -258,7 +285,6 @@ int main () {
   }
   insertData.close();
   searchData.close();
-
   insertData.open("insert_collisions_CHT_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
   searchData.open("search_collisions_CHT_dataSetB.csv", std::fstream::in | std::fstream::out | std::fstream::app);
   for(int i = 0; i < testDataSize/100; i++) {

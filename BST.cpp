@@ -64,7 +64,7 @@ bool BST::searchKey(int key) {
     Node *tree = searchKeyHelper(root, key);
     if(tree != NULL)
         return true;
-    cout << "Key not present in the tree" << endl;
+    //cout << "Key not present in the tree" << endl;
     return false;
 }
 
